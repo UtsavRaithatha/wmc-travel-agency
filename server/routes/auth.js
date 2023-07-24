@@ -3,25 +3,52 @@ const passport = require("passport");
 const router = require("express").Router();
 const User = require("../models/user");
 
+const CLIENT_URL = "http://localhost:3000/";
+
 router.get("/auth/google",
     passport.authenticate("google", { scope: ["profile"] })
 );
 
-router.get("/auth/google/home",
-    passport.authenticate("google", { failureRedirect: "/login" }),
-    function (req, res) {
-        res.redirect("/home");
-    }
+router.get("/auth/google/callback",
+    passport.authenticate("google", {
+        successRedirect: CLIENT_URL,
+        failureRedirect: "/login/failed"
+    })
 );
+
+router.get("/api/auth/check", function (req, res) {
+    if (req.isAuthenticated()) {
+        res.status(200).json({isLoggedIn: true, user: req.user});
+    }
+    else {
+        res.status(200).json({isLoggedIn: false});
+    }
+})
+
+// router.get("/login/success", function (req, res) {
+//     if (req.user) {
+//         res.status(200).json({
+//             success: true,
+//             message: "successful",
+//             user: req.user
+//         });
+//     }
+// });
+
+router.get("/login/failed", function (req, res) {
+    res.status(401).json({
+        success: false,
+        message: "failure"
+    });
+})
 
 router.get("/logout", function (req, res) {
     req.logout();
-    res.redirect("/");
+    res.redirect(CLIENT_URL);
 });
 
 router.post("/register", async function (req, res) {
     try {   
-        console.log(req.body);
         const existingUser = await User.findOne({ email: req.body.email });
         if (existingUser) {
             return res.status(409).json({ message: "User already exists" });

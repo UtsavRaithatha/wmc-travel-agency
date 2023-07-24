@@ -4,10 +4,6 @@
     src: url("../fonts/harry-p-font/HarryP-MVZ6w.ttf");
 }
 
-#root {
-    width: 100%;
-}
-
 body {
     display: flex;
     justify-content: cennter;

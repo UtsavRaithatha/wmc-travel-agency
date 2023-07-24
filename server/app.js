@@ -13,7 +13,12 @@ const User = require("./models/user");
 const app = express();
  
 app.use(bodyParser.urlencoded({extended: true}));
-app.use(cors());
+app.use(cors({
+    origin: "http://localhost:3000", // Replace with your React app's URL
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type", "Authorization"],
+  credentials: true,
+}));
 app.use(express.json());
 
 app.use((req, res, next) => {

@@ -48,6 +48,10 @@ function Login() {
     }
   }
 
+  const googleLogin = () => {
+    window.open("http://localhost:5000/auth/google", "_self");
+  }
+
   return (
     <>
       <div className="container">
@@ -59,12 +63,10 @@ function Login() {
               </div>
               <div className="card-body">
 
-                <div>
-                  <Link className="btn btn-block btn-social btn-google mb-4" to="/auth/google" role="button">
+                  <div className="btn btn-block btn-social btn-google mb-4" onClick={googleLogin}>
                     <i className="fab fa-google"></i>
                     Sign In with Google
-                  </Link>
-                </div>
+                  </div>
 
                 <form method="POST">
 
