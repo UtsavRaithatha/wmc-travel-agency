@@ -1,22 +1,25 @@
 
 import React, { useState } from "react";
+import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 
 function Login() {
 
   const navigate = useNavigate();
 
-  const [user, setUser] = useState({
+  const [data, setData] = useState({
     email: "",
     password: ""
   });
 
-  const { email, password } = user;
+  const { email, password } = data;
+
+  const [error, setError] = useState("");
 
   function handleChange(event) {
     const { value, name } = event.target;
 
-    setUser(prevData => {
+    setData(prevData => {
       return {
         ...prevData,
         [name] : value
@@ -24,28 +27,20 @@ function Login() {
     });
   }
 
-  const postData = async (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
 
-    const response = await fetch("http://localhost:5000/login", {
-      method: "POST",
-      headers: {
-        "Content-Type": "application/json"
-      },
-      body: JSON.stringify({
-        email, password
-      })
-    });
-
-    const data = await response.json();
-
-    if (data.status === 401 || data.status === 500 || !data) {
-      window.alert("Login invalid");
-    }
-    else {
-      window.alert("Login Successful");
+    try {
+      const url = "http://localhost:5000/api/auth";
+      const { data: res } = await axios.post(url, data);
+      localStorage.setItem("token", res.data);
       navigate("/");
+    } catch (error) {
+      if (error.response && error.response.status >= 400 && error.response.status <= 500) {
+        setError(error.response.data.message);
+      }
     }
+
   }
 
   const googleLogin = () => {
@@ -68,7 +63,7 @@ function Login() {
                     Sign In with Google
                   </div>
 
-                <form method="POST">
+                <form onClick={handleSubmit}>
 
                   <div className="form-floating mb-3 inputBox">
                     <input type="email" className="form-control inputText" id="floatingInput" placeholder="name@example.com" name="email" value={email} onChange={handleChange} />
@@ -83,7 +78,8 @@ function Login() {
                   <p className="fw-bold mt-3 pt-1 mb-3">Don't have an account? <Link to="/register"
                     className="link-info">Register</Link></p>
 
-                  <button type="submit" className="btn btn-primary btn-lg" onClick={postData}>Login</button>
+                  <button type="submit" className="btn btn-primary btn-lg">Login</button> 
+                {error && <div style={{color: "white"}}>{error}</div>}
                 </form>
               </div>
             </div>

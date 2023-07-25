@@ -1,15 +1,20 @@
 const mongoose = require("mongoose");
 
-const databaseUrl = "mongodb+srv://raithathautsav11:travelagency@database.ql9szli.mongodb.net/travel-agency?retryWrites=true&w=majority";
+module.exports = () => {
+    const connectionParams = {
+        useNewUrlParser: true,
+        useUnifiedTopology: true
+    };
 
-// const databaseUrl = "mongodb://127.0.0.1:27017/userDB";
+    try {
+        
+        mongoose.connect(process.env.DB, connectionParams);
+        console.log("Connected to DB successfully");
 
-mongoose.connect(databaseUrl, { useNewUrlParser: true, useUnifiedTopology: true });
-
-const db = mongoose.connection;
-db.on("error", console.error.bind(console, "MongoDB connection error:"));
-db.once("open", () => {
-  console.log("Connected to MongoDB successfully!");
-});
-
-module.exports = db;   
+    } catch (error) {
+        
+        console.log(error);
+        console.log("Could not connect to the database");
+    
+    }
+}
