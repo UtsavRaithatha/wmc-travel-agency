@@ -9,6 +9,9 @@ const userRoutes = require("./routes/users");
 const authRoutes = require("./routes/auth");
 const passportSetup = require("./config/passport");
 const googleAuth = require("./routes/googleAuth");
+const exploreRoute = require("./routes/explore");
+const explorePackagesRoute = require("./routes/explorePackages");
+const addTravelPackageRoute = require("./routes/addTravelPackage");
 
 const app = express();
 
@@ -18,11 +21,6 @@ connection();
 // middlewares
 app.use(express.json());
 app.use(cors());
-// app.use(cors({
-//     origin: "http://localhost:3000",
-//     methods: "GET,POST,PUT,DELETE",
-//     credentials: true
-// }));
 
 app.use(session({
     secret: "This is the secret",
@@ -37,6 +35,9 @@ app.use(passport.session());
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/", googleAuth);
+app.use("/", exploreRoute);
+app.use("/", explorePackagesRoute);
+app.use("/", addTravelPackageRoute);
 
 const port = process.env.PORT || 5000;
 
