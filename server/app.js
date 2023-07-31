@@ -9,7 +9,7 @@ const userRoutes = require("./routes/users");
 const authRoutes = require("./routes/auth");
 const passportSetup = require("./config/passport");
 const googleAuth = require("./routes/googleAuth");
-const travelPackageRoute = require("./routes/travelPackage");
+const travelPackageRoutes = require("./routes/travelPackage");
 
 const app = express();
 
@@ -27,13 +27,13 @@ app.use(session({
 }));
 
 app.use(passport.initialize());
-app.use(passport.session()); 
+app.use(passport.session());
 
 // routes 
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/", googleAuth);
-app.use("/", travelPackageRoute);
+app.use("/", travelPackageRoutes);
 
 const port = process.env.PORT || 5000;
 

@@ -112,7 +112,7 @@ const EditTravelPackage = () => {
     return (
         <div className="TravelPackageForm">
             <div className="container mt-5">
-            <h3 className="harry d-flex justify-content-center py-3">Edit Travel Package</h3>
+            <h3 className="harry d-flex justify-content-center py-3">{formData.name}</h3>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group row mb-3">
                         <label htmlFor="name" className="col-sm-2 col-form-label">Name</label>

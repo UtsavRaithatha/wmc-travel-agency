@@ -1,14 +1,20 @@
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const passport = require("passport");
-const User= require("../models/googleUser");
+const { User } = require("../models/user");
 
-passport.serializeUser(function (user, done) {
-    done(null, user.id);
+passport.serializeUser(function (user, cb) {
+    process.nextTick(function () {
+        return cb(null, {
+            id: user.id,
+            username: user.username,
+            picture: user.picture
+        });
+    });
 });
 
-passport.deserializeUser(function (id, done) {
-    User.findById(id).then(function (err, user) {
-        done(err, user);
+passport.deserializeUser(function (user, cb) {
+    process.nextTick(function () {
+        return cb(null, user);
     });
 });
 
@@ -19,8 +25,7 @@ passport.use(new GoogleStrategy({
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
 },
     function (accessToken, refreshToken, profile, cb) {
-        User.findOrCreate([{ googleId: profile.id }]).then(function (err, user) {
-            console.log(profile);
+        User.findOrCreate({ googleId: profile.id }, function (err, user) {
             return cb(err, user);
         });
     }
