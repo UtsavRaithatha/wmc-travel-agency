@@ -12,12 +12,12 @@ const userSchema = new mongoose.Schema({
     googleId: String
 });
 
-userSchema.plugin(findOrCreate);
-
 userSchema.methods.generateAuthToken = function() {
     const token = jwt.sign({_id: this._id}, process.env.JWTPRIVATEKEY, {expiresIn: "7d"});
     return token;
 }
+
+userSchema.plugin(findOrCreate);
 
 const User = mongoose.model("User", userSchema);
 

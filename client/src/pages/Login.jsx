@@ -23,7 +23,7 @@ function Login() {
     setData(prevData => {
       return {
         ...prevData,
-        [name] : value
+        [name]: value
       }
     });
   }
@@ -59,27 +59,27 @@ function Login() {
               </div>
               <div className="card-body">
 
-                  <div className="btn btn-block btn-social btn-google mb-4" onClick={googleLogin}>
-                    <i className="fab fa-google"></i>
-                    Sign In with Google
-                  </div>
+                <button className="btn btn-block btn-social btn-google mb-4" type="submit" style={{ backgroundColor: "#dd4b39" }} onClick={googleLogin}>
+                  <i className="fab fa-google me-2"></i>
+                  Sign Up with Google
+                </button>
 
                 <form onClick={handleSubmit}>
 
                   <div className="form-floating mb-3 input-box">
                     <input type="email" className="form-control input-text" id="floatingInput" placeholder="name@example.com" name="email" value={email} onChange={handleChange} />
-                      <label htmlFor="floatingInput">Email address</label>
+                    <label htmlFor="floatingInput">Email address</label>
                   </div>
 
                   <div className="form-floating mb-3 input-box">
                     <input type="password" className="form-control input-text" id="floatingPassword" placeholder="Password" name="password" value={password} onChange={handleChange} />
-                      <label htmlFor="floatingPassword">Password</label>
+                    <label htmlFor="floatingPassword">Password</label>
                   </div>
 
                   <p className="fw-bold mt-3 pt-1 mb-3">Don't have an account? <Link to="/register">Register</Link></p>
 
-                  <button type="submit" className="btn btn-primary btn-lg">Login</button> 
-                {error && <div style={{color: "white"}}>{error}</div>}
+                  <button type="submit" className="btn btn-primary btn-lg">Login</button>
+                  {error && <div style={{ color: "white" }}>{error}</div>}
                 </form>
               </div>
             </div>
@@ -89,7 +89,7 @@ function Login() {
 
       <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossOrigin="anonymous"></script>
     </div>
-    );
+  );
 }
 
 export default Login;

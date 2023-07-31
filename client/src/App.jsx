@@ -9,6 +9,7 @@ import Background from './components/Background';
 import TravelPackage from './pages/TravelPackage';
 import "./styles.css";
 import AddTravelPackage from './pages/AddTravelPackage';
+import EditTravelPackage from './pages/EditTravelPackage';
 
 function App() {
 
@@ -16,6 +17,7 @@ function App() {
 
   return (
     <div className="App">
+      <Background />
       <BrowserRouter>
         <Routes>
           <Route path="/login" element={<Login />} />
@@ -26,6 +28,7 @@ function App() {
           <Route path="/about" element={user ? <About /> : <Login />} />
           <Route path="/api/explore/:key" element={user ? <TravelPackage /> : <Login />} />
           <Route path="/api/add-travel-package" element={<AddTravelPackage />} />
+          <Route path="/api/edit-travel-package/:key" element={<EditTravelPackage />} />
         </Routes>
       </BrowserRouter>
     </div>

@@ -9,9 +9,7 @@ const userRoutes = require("./routes/users");
 const authRoutes = require("./routes/auth");
 const passportSetup = require("./config/passport");
 const googleAuth = require("./routes/googleAuth");
-const exploreRoute = require("./routes/explore");
-const explorePackagesRoute = require("./routes/explorePackages");
-const addTravelPackageRoute = require("./routes/addTravelPackage");
+const travelPackageRoute = require("./routes/travelPackage");
 
 const app = express();
 
@@ -35,9 +33,7 @@ app.use(passport.session());
 app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/", googleAuth);
-app.use("/", exploreRoute);
-app.use("/", explorePackagesRoute);
-app.use("/", addTravelPackageRoute);
+app.use("/", travelPackageRoute);
 
 const port = process.env.PORT || 5000;
 

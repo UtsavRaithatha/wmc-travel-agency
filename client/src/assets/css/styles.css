@@ -32,6 +32,12 @@ body {
     width: 100%;
 }
 
+.harry {
+    font-family: harryPFont;
+    font-size: 4rem;
+    color: var(--tertiary-color);
+}
+
 a {
     text-decoration: none;
 }
@@ -54,7 +60,7 @@ a {
     height: 100vh;
 }
 
-.card {
+.Authentication .card {
     background-color: transparent;
     text-align: center;
     border: 0;
@@ -176,6 +182,7 @@ form>p {
 
 /* Card section starts */
 
+
 .Card .card {
     border: 0.3em solid var(--tertiary-color);
     height: 35rem;
@@ -204,3 +211,29 @@ form>p {
 
 
 /* Carousel section ends */
+
+
+/* Add Travel Package page starts */
+
+.TravelPackageForm label {
+    color: var(--quaternary-color);
+    font-size: 1.2rem;
+}
+
+.TravelPackageForm .day-no {
+    color: var(--tertiary-color);
+    font-weight: bold;
+    background-color: var(--background-color);
+}
+
+.TravelPackageForm .package-btn {
+    background-color: var(--accent-color);
+    border: var(--secondary-color);
+}
+
+.TravelPackageForm input {
+    color: var(--secondary-color);
+    font-weight: bold;
+}
+
+/* Add Travel Package page ends */

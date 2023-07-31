@@ -1,8 +1,10 @@
-import React, { useState } from "react";
-import "../assets/css/styles.css";
+import React, { useState, useEffect } from "react";
+import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
 
-const AddTravelPackage = () => {
+const EditTravelPackage = () => {
+    const navigate = useNavigate();
+    const { key } = useParams();
     const [formData, setFormData] = useState({
         name: "",
         duration: "",
@@ -10,6 +12,18 @@ const AddTravelPackage = () => {
         itinerary: [""],
         img: [{ link: "", altText: "" }],
     });
+
+    useEffect(() => {
+        const fetchTravelPackage = async () => {
+            try {
+                const response = await axios.get(`http://localhost:5000/api/explore/${key}`);
+                setFormData(response.data);
+            } catch (error) {
+                console.log("Error fetching travel package: ", error);
+            }
+        };
+        fetchTravelPackage();
+    }, [key]);
 
     const handleChange = (e) => {
         const { name, value } = e.target;
@@ -86,28 +100,19 @@ const AddTravelPackage = () => {
         }
 
         try {
-            await axios.post("http://localhost:5000/api/add-travel-package", formData);
+            await axios.put(`http://localhost:5000/api/edit-travel-package/${key}`, formData);
 
-            setFormData({
-                name: "",
-                duration: "",
-                price: "",
-                itinerary: [""],
-                img: [{ link: "", altText: "" }],
-            });
-
-            alert("Travel Package added successfully");
-
+            alert("Travel Package edited successfully");
+            navigate(`/api/explore/${key}`);
         } catch (error) {
             console.log("Error: ", error);
         }
-
     };
 
     return (
         <div className="TravelPackageForm">
             <div className="container mt-5">
-                <h3 className="harry d-flex justify-content-center py-3">Add a Travel Package</h3>
+            <h3 className="harry d-flex justify-content-center py-3">Edit Travel Package</h3>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group row mb-3">
                         <label htmlFor="name" className="col-sm-2 col-form-label">Name</label>
@@ -239,11 +244,11 @@ const AddTravelPackage = () => {
                             </div>
                         </div>
                     </div>
-                    <div className="d-flex justify-content-center"><button type="submit" className="btn btn-primary mt-3 package-btn mb-5">Add Package</button></div>
+                    <div className="d-flex justify-content-center"><button type="submit" className="btn btn-primary mt-3 package-btn mb-5">Save Changes</button></div>
                 </form>
             </div>
         </div>
     );
 };
 
-export default AddTravelPackage;
+export default EditTravelPackage;

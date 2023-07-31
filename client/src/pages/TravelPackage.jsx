@@ -40,7 +40,7 @@ const TravelPackage = () => {
         <div>
           <Carousel imgData={travelPackage.img} />
 
-          <div className="container mt-5">
+          <div className="container mt-5 pb-5">
             <div className="jumbotron">
               <h2 className="display-4 text-center">{travelPackage.name}</h2>
               <p className="lead text-center">Duration: {travelPackage.duration}</p>

@@ -1,6 +1,6 @@
 const GoogleStrategy = require("passport-google-oauth20").Strategy;
 const passport = require("passport");
-const User = require("../models/googleUser");
+const User= require("../models/googleUser");
 
 passport.serializeUser(function (user, done) {
     done(null, user.id);
@@ -19,7 +19,8 @@ passport.use(new GoogleStrategy({
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
 },
     function (accessToken, refreshToken, profile, cb) {
-        User.findOrCreate({ googleId: profile.id }, function (err, user) {
+        User.findOrCreate([{ googleId: profile.id }]).then(function (err, user) {
+            console.log(profile);
             return cb(err, user);
         });
     }
