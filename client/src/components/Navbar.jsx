@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLocation } from "react-router-dom";
 import "../assets/css/styles.css";
 
-export default function Navbar() {
+export default function Navbar(props) {
 
     const location = useLocation();
 
@@ -24,7 +24,7 @@ export default function Navbar() {
                                 <Link className={`nav-link${isActive("/") ? " active fw-bold" : ""}`} to="/">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link className={`nav-link${isActive("/explore") ? " active fw-bold" : ""}`} to="/explore">Explore</Link>
+                                <Link className={`nav-link${isActive("/api/explore") ? " active fw-bold" : ""}`} to="/api/explore">Explore</Link>
                             </li>
                             <li className="nav-item">
                                 <Link className={`nav-link${isActive("/contact") ? " active fw-bold" : ""}`} to="/contact">Contact</Link>
@@ -32,6 +32,7 @@ export default function Navbar() {
                             <li className="nav-item">
                                 <Link className={`nav-link${isActive("/about") ? " active fw-bold" : ""}`} to="/about">About</Link>
                             </li>
+                            <button onClick={props.onLogout}> Logout </button>
                         </ul>
                     </div>
                 </div>

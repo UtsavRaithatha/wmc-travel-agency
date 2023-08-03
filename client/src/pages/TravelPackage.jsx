@@ -2,7 +2,6 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams } from "react-router-dom";
 import Carousel from "../components/Carousel";
-import Navbar from "../components/Navbar";
 import Itinerary from "../components/Itinerary";
 import "../assets/css/styles.css";
 
@@ -33,7 +32,6 @@ const TravelPackage = () => {
   return (
 
     <div className="TravelPackage">
-      <Navbar />
       {isError && <p className="error">{isError}</p>}
 
       {Object.keys(travelPackage).length > 0 && (

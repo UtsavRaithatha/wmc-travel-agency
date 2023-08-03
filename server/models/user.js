@@ -9,11 +9,17 @@ const userSchema = new mongoose.Schema({
     lastName: String,
     email: String,
     password: String,
-    googleId: String
+    googleId: String,
+    picture: String,
+    role: {
+        type: String,
+        enum: ["user", "admin"],
+        default: "user"
+    }
 });
 
 userSchema.methods.generateAuthToken = function() {
-    const token = jwt.sign({_id: this._id}, process.env.JWTPRIVATEKEY, {expiresIn: "7d"});
+    const token = jwt.sign({user: this.toObject()}, process.env.JWTPRIVATEKEY, {expiresIn: "7d"});
     return token;
 }
 

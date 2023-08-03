@@ -1,5 +1,4 @@
 import React, { useState, useEffect } from "react";
-import Navbar from "../components/Navbar";
 import Card from "../components/Card";
 import axios from "axios";
 import "../assets/css/styles.css";
@@ -12,7 +11,7 @@ function Explore() {
     useEffect(() => {
         const fetchTravelPackage = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/explore`);
+                const response = await axios.get(`http://localhost:5000/api/explore`);
                 setTravelPackage(response.data);
             } catch (error) {
                 if (error.response.status === 404) {
@@ -29,7 +28,6 @@ function Explore() {
 
     return (
         <div className="Explore">
-            <Navbar />
             {isError && <p className="error">{isError}</p>}
 
             {Object.keys(travelPackage).length > 0 && (

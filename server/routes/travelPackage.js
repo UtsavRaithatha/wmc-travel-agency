@@ -16,7 +16,7 @@ router.get("/explore", async (req, res) => {
     }
 });
 
-router.get("/api/explore/:key", async (req, res) => {
+router.get("/explore/:key", async (req, res) => {
     try {
         const key = parseInt(req.params.key);
         const travelPackage = await TravelPackage.findOne({ key: key });
@@ -31,7 +31,7 @@ router.get("/api/explore/:key", async (req, res) => {
     }
 });
 
-router.post("/api/add-travel-package", async (req, res) => {
+router.post("/add-travel-package", async (req, res) => {
     try {
         const totalPackages = await TravelPackage.countDocuments();
 
@@ -49,7 +49,7 @@ router.post("/api/add-travel-package", async (req, res) => {
     }
 });
 
-router.put('/api/edit-travel-package/:key', async (req, res) => {
+router.put("/edit-travel-package/:key", async (req, res) => {
   try {
     const key = parseInt(req.params.key);
 

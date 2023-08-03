@@ -14,14 +14,14 @@ router.get("/auth/google/callback",
     res.redirect(CLIENT_URL);
 });
 
-// router.get("/api/auth/check", function (req, res) {
-//     if (req.isAuthenticated()) {
-//         res.status(200).json({isLoggedIn: true, user: req.user});
-//     }
-//     else {
-//         res.status(200).json({isLoggedIn: false});
-//     }
-// });
+router.get("/api/auth/check", function (req, res) {
+    if (req.isAuthenticated()) {
+        res.status(200).json({isLoggedIn: true, user: req.user});
+    }
+    else {
+        res.status(200).json({isLoggedIn: false});
+    }
+});
 
 router.get("/login/failed", function (req, res) {
     res.status(401).json({
@@ -30,9 +30,18 @@ router.get("/login/failed", function (req, res) {
     });
 })
 
-router.get("/logout", function (req, res) {
-    req.logout();
-    res.redirect(CLIENT_URL);
+router.get("/logout", function (req, res, next) {
+  req.logout(function(err) {
+    if (err) { 
+      return next(err); 
+    }
+    req.session.destroy(function(err) {
+      if (err) {
+        return next(err);
+      }
+      res.redirect(CLIENT_URL);
+    });
+  });
 });
 
 module.exports = router;

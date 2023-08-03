@@ -4,11 +4,7 @@ const { User } = require("../models/user");
 
 passport.serializeUser(function (user, cb) {
     process.nextTick(function () {
-        return cb(null, {
-            id: user.id,
-            username: user.username,
-            picture: user.picture
-        });
+        return cb(null, user);
     });
 });
 
@@ -24,9 +20,22 @@ passport.use(new GoogleStrategy({
     callbackURL: "http://localhost:5000/auth/google/callback",
     userProfileURL: "https://www.googleapis.com/oauth2/v3/userinfo"
 },
-    function (accessToken, refreshToken, profile, cb) {
-        User.findOrCreate({ googleId: profile.id }, function (err, user) {
-            return cb(err, user);
-        });
+    async function (accessToken, refreshToken, profile, cb) {
+        try {
+
+            const { given_name, family_name, email, sub, picture } = profile._json;
+
+            const user = await User.findOrCreate({ googleId: sub }, {
+                firstName: given_name,
+                lastName: family_name,
+                email: email,
+                googleId: sub,
+                picture: picture
+            })
+
+            return cb(null, user);
+        } catch (err) {
+            return cb(err);
+        }
     }
 ));
