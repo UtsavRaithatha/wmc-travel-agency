@@ -49,9 +49,18 @@ function App() {
     }
   }, []);
 
-  const handleLogout = () => {
-    localStorage.removeItem("token");
-    console.log(user);
+  const handleLogout = async () => {
+    try {
+      localStorage.removeItem("token");
+      setUser(null);
+  
+      await fetch("http://localhost:5000/logout", {
+        method: "GET",
+        credentials: "include",
+      });
+    } catch (error) {
+      console.log("Error while logging out:", error);
+    }
   };
 
   return (
