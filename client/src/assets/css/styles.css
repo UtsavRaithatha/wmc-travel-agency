@@ -96,18 +96,28 @@ form>p {
 
 /* Navbar Page start */
 
-.navbar {
+.Navbar .navbar {
     background-color: var(--tertiary-color) !important;
     padding: 0.8rem 0;
 }
 
-.navbar-brand {
+.Navbar .navbar-brand {
     font-family: harryPFont;
 }
 
-#logo {
+.Navbar #logo {
     width: 5rem;
     padding-right: 1rem;
+}
+
+.Navbar .dropdown-menu {
+    background-color: var(--tertiary-color);
+    color: var(--secondary-color);
+}
+
+.Navbar .profile-img {
+    border-radius: 50%;
+    height: 2rem;
 }
 
 /* Navbar Page end */

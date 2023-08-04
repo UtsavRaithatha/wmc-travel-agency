@@ -3,7 +3,7 @@ import Card from "../components/Card";
 import axios from "axios";
 import "../assets/css/styles.css";
 
-function Explore() {
+function Explore(props) {
 
     const [travelPackage, setTravelPackage] = useState([]);
     const [isError, setIsError] = useState("");
@@ -44,6 +44,7 @@ function Explore() {
                                     price={item.price}
                                     duration={item.duration}
                                     id={item.key}
+                                    isAdmin={props.isAdmin}
                                 />
                             ))}
 

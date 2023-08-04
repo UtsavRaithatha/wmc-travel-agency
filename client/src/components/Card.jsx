@@ -14,7 +14,7 @@ export default function Card(props) {
                     <div className="d-flex justify-content-center align-items-center my-4">
                         <div className="btn-group">
                             <Link type="button" className="btn btn-lg btn-secondary" to={`/api/explore/${props.id}`}>View</Link>
-                            <Link type="button" className="btn btn-lg btn-primary" to={`/api/edit-travel-package/${props.id}`}>Edit</Link>
+                            {props.isAdmin && <Link type="button" className="btn btn-lg btn-primary" to={`/api/edit-travel-package/${props.id}`}>Edit</Link>}
                         </div>
                     </div>
                 </div>

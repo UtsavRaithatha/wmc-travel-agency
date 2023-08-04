@@ -25,12 +25,9 @@ app.use(cors({
 }));
 
 app.use(session({
-    secret: "This is the secret",
+    secret: process.env.SECRET,
     resave: false,
     saveUninitialized: false,
-    cookie: {
-        sameSite: "lax" // or "strict"
-    }
 }));
 
 app.use(passport.initialize());

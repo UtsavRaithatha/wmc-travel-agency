@@ -37,7 +37,7 @@ function App() {
           const data = response.data;
           
           if (data.isLoggedIn && data.user) {
-            setUser(data.user);
+            setUser(data.user.doc);
           } else {
             setUser(null);
           }
@@ -63,21 +63,23 @@ function App() {
     }
   };
 
+  const isAdmin = user && user.role === "admin";
+
   return (
     <div className="App">
       <Background />
       <BrowserRouter>
-        {user && <Navbar onLogout={handleLogout} />}
+        {user && <Navbar onLogout={handleLogout} link={user.picture} />}
         <Routes>
           <Route path="/login" element={user ? <Navigate replace to="/" /> : <Login />} />
           <Route path="/register" element={user ? <Navigate replace to="/" /> : <Register />} />
           <Route path="/" element={user ? <Home /> : <Navigate replace to="/login" />} />
-          <Route path="/api/explore" element={user ? <Explore /> : <Navigate replace to="/login" />} />
+          <Route path="/api/explore" element={user ? <Explore isAdmin={isAdmin}/> : <Navigate replace to="/login" />} />
           <Route path="/contact" element={user ? <Contact /> : <Navigate replace to="/login" />} />
           <Route path="/about" element={user ? <About /> : <Navigate replace to="/login" />} />
           <Route path="/api/explore/:key" element={user ? <TravelPackage /> : <Navigate replace to="/login" />} />
-          <Route path="/api/add-travel-package" element={<AddTravelPackage />} />
-          <Route path="/api/edit-travel-package/:key" element={<EditTravelPackage />} />
+          {isAdmin && <Route path="/api/add-travel-package" element={<AddTravelPackage />} />}
+          {isAdmin && <Route path="/api/edit-travel-package/:key" element={<EditTravelPackage />} />}
         </Routes>
       </BrowserRouter>
     </div>

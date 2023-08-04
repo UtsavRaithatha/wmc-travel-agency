@@ -3,7 +3,6 @@ import { Link, useLocation } from "react-router-dom";
 import "../assets/css/styles.css";
 
 export default function Navbar(props) {
-
     const location = useLocation();
 
     const isActive = (pathname) => {
@@ -32,8 +31,16 @@ export default function Navbar(props) {
                             <li className="nav-item">
                                 <Link className={`nav-link${isActive("/about") ? " active fw-bold" : ""}`} to="/about">About</Link>
                             </li>
-                            <button onClick={props.onLogout}> Logout </button>
                         </ul>
+                        <div className="nav-item dropdown px-2">
+                            <Link className="nav-link dropdown-toggle" to="/profile" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                                {typeof props.link === "undefined" ? <i className="fa-solid fa-user" style={{ color: "#3c2a21" }}></i> : <img className="profile-img" src={props.link} alt="profile" referrerPolicy="no-referrer" />}
+                            </Link>
+                            <ul className="dropdown-menu">
+                                <li><Link className="dropdown-item" to="/profile">My Profile</Link></li>
+                                <li><Link className="dropdown-item" onClick={props.onLogout}>Logout</Link></li>
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </nav>
