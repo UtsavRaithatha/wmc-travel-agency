@@ -11,13 +11,19 @@ const EditTravelPackage = () => {
         price: "",
         itinerary: [""],
         img: [{ link: "", altText: "" }],
+        dates: [],
     });
 
     useEffect(() => {
         const fetchTravelPackage = async () => {
             try {
                 const response = await axios.get(`http://localhost:5000/api/explore/${key}`);
-                setFormData(response.data);
+                const formattedDates = response.data.dates.map((date) => {
+                    const dateObj = new Date(date);
+                    const formattedDate = dateObj.toISOString().split('T')[0];
+                    return formattedDate;
+                });
+                setFormData({ ...response.data, dates: formattedDates });
             } catch (error) {
                 console.log("Error fetching travel package: ", error);
             }
@@ -84,6 +90,35 @@ const EditTravelPackage = () => {
         });
     };
 
+    const handleDateChange = (index, e) => {
+        const { value } = e.target;
+        setFormData((prevData) => {
+            const updatedDates = [...prevData.dates];
+            updatedDates[index] = value;
+            return {
+                ...prevData,
+                dates: updatedDates,
+            };
+        });
+    };
+
+    const handleAddDate = () => {
+        setFormData((prevData) => ({
+            ...prevData,
+            dates: [...prevData.dates, ""],
+        }));
+    };
+
+    const handleRemoveDate = (index) => {
+        setFormData((prevData) => {
+            const updatedDates = prevData.dates.filter((date, i) => i !== index);
+            return {
+                ...prevData,
+                dates: updatedDates,
+            };
+        });
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -93,15 +128,28 @@ const EditTravelPackage = () => {
             formData.duration === "" ||
             formData.price === "" ||
             formData.itinerary.length === 0 ||
-            formData.img.length === 0
+            formData.img.length === 0 ||
+            formData.dates.length === 0
         ) {
             alert("Please fill in all required fields and add at least one image and one itinerary item.");
             return;
         }
 
-        try {
-            await axios.put(`http://localhost:5000/api/edit-travel-package/${key}`, formData);
+        const formattedDates = formData.dates.map((date) => {
+            const dateObj = new Date(date);
+            return dateObj.toISOString();
+        });
+        
+        const formDataWithFormattedDates = {
+            ...formData,
+            dates: formattedDates,
+        };
 
+        console.log(formDataWithFormattedDates);
+
+        try {
+            await axios.put(`http://localhost:5000/api/edit-travel-package/${key}`, formDataWithFormattedDates);
+            
             alert("Travel Package edited successfully");
             navigate(`/api/explore/${key}`);
         } catch (error) {
@@ -112,7 +160,7 @@ const EditTravelPackage = () => {
     return (
         <div className="TravelPackageForm">
             <div className="container mt-5">
-            <h3 className="harry d-flex justify-content-center py-3">{formData.name}</h3>
+                <h3 className="harry d-flex justify-content-center py-3">{formData.name}</h3>
                 <form onSubmit={handleSubmit}>
                     <div className="form-group row mb-3">
                         <label htmlFor="name" className="col-sm-2 col-form-label">Name</label>
@@ -142,6 +190,42 @@ const EditTravelPackage = () => {
                             />
                         </div>
                     </div>
+
+                    <div>
+                        <div className="form-group mb-3">
+                            <label className="mb-3">Available Dates</label>
+                            {formData.dates.map((date, index) => (
+                                <div key={index} className="input-group mb-3">
+                                    <input
+                                        type="date"
+                                        className="form-control"
+                                        value={date}
+                                        onChange={(e) => handleDateChange(index, e)}
+                                        required
+                                    />
+                                    {index > 0 && (
+                                        <button
+                                            type="button"
+                                            className="btn btn-danger"
+                                            onClick={() => handleRemoveDate(index)}
+                                        >
+                                            Remove Date
+                                        </button>
+                                    )}
+                                </div>
+                            ))}
+                            <div className="d-flex justify-content-center">
+                                <button
+                                    type="button"
+                                    className="btn btn-secondary mt-3"
+                                    onClick={handleAddDate}
+                                >
+                                    Add a Date
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
                     <div className="form-group row mb-3">
                         <label htmlFor="price" className="col-sm-2 col-form-label">Price</label>
                         <div className="col-sm-10">

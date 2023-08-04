@@ -67,6 +67,8 @@ function App() {
 
   const isAdmin = user && user.role === "admin";
 
+  console.log(user);
+
   return (
     <div className="App">
       <Background />

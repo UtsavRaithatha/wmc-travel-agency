@@ -63,6 +63,7 @@ router.put("/edit-travel-package/:key", async (req, res) => {
     existingTravelPackage.price = req.body.price;
     existingTravelPackage.itinerary = req.body.itinerary;
     existingTravelPackage.img = req.body.img;
+    existingTravelPackage.dates = req.body.dates;
 
     await existingTravelPackage.save();
 

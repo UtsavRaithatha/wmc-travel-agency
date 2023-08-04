@@ -7,6 +7,7 @@ const TravelPackageSchema = new mongoose.Schema({
     price: { type: String, required: true },
     itinerary: { type: [String], required: true },
     img: { type: [{ link: String, altText: String }], required: true },
+    dates: { type: [Date], required: true }
 });
 
 const TravelPackage = mongoose.model("TravelPackage", TravelPackageSchema);

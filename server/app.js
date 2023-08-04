@@ -10,6 +10,7 @@ const authRoutes = require("./routes/auth");
 const passportSetup = require("./config/passport");
 const googleAuth = require("./routes/googleAuth");
 const travelPackageRoutes = require("./routes/travelPackage");
+const bookingRoutes = require("./routes/booking");
 
 const app = express();
 
@@ -38,6 +39,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/", googleAuth);
 app.use("/api", travelPackageRoutes);
+app.use("/api/bookings", bookingRoutes);
 
 const port = process.env.PORT || 5000;
 

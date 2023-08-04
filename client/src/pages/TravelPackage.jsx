@@ -29,6 +29,19 @@ const TravelPackage = () => {
     fetchTravelPackage();
   }, [key]);
 
+  const getDayName = (dayIndex) => {
+    const days = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
+    return days[dayIndex];
+  };
+
+  const getMonthName = (month) => {
+    const monthNames = [
+      "January", "February", "March", "April", "May", "June", "July",
+      "August", "September", "October", "November", "December"
+    ];
+    return monthNames[month];
+  }
+
   return (
 
     <div className="TravelPackage">
@@ -44,6 +57,17 @@ const TravelPackage = () => {
               <p className="lead text-center">Duration: {travelPackage.duration}</p>
               <p className="text-center">Price: {travelPackage.price}</p>
             </div>
+
+            <div className="container mt-5">
+            <h3 className="mb-4 d-flex justify-content-center">Departure Options Available</h3>
+            <div className="dates-container">
+            {travelPackage.dates.map((date, index) => {
+              const onlyDate = new Date(date);
+              const displayDate = getDayName(onlyDate.getDay()) + ", " + onlyDate.getDate() + " " + getMonthName(onlyDate.getMonth()) + " " + onlyDate.getFullYear();
+              return <p key={index} className="text-center">{displayDate}</p>;
+            })}
+            </div>
+          </div>
 
             <div className="container mt-5">
               <h3 className="mb-4 d-flex justify-content-center">Itinerary</h3>

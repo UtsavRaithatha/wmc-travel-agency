@@ -9,6 +9,7 @@ const AddTravelPackage = () => {
         price: "",
         itinerary: [""],
         img: [{ link: "", altText: "" }],
+        dates: [""],
     });
 
     const handleChange = (e) => {
@@ -70,6 +71,35 @@ const AddTravelPackage = () => {
         });
     };
 
+    const handleDateChange = (index, e) => {
+        const { value } = e.target;
+        setFormData((prevData) => {
+            const updatedDates = [...prevData.dates];
+            updatedDates[index] = value;
+            return {
+                ...prevData,
+                dates: updatedDates,
+            };
+        });
+    };
+
+    const handleAddDate = () => {
+        setFormData((prevData) => ({
+            ...prevData,
+            dates: [...prevData.dates, ""],
+        }));
+    };
+
+    const handleRemoveDate = (index) => {
+        setFormData((prevData) => {
+            const updatedDates = prevData.dates.filter((date, i) => i !== index);
+            return {
+                ...prevData,
+                dates: updatedDates,
+            };
+        });
+    };
+
     const handleSubmit = async (e) => {
         e.preventDefault();
 
@@ -79,7 +109,8 @@ const AddTravelPackage = () => {
             formData.duration === "" ||
             formData.price === "" ||
             formData.itinerary.length === 0 ||
-            formData.img.length === 0
+            formData.img.length === 0 ||
+            formData.dates.length === 0
         ) {
             alert("Please fill in all required fields and add at least one image and one itinerary item.");
             return;
@@ -94,6 +125,7 @@ const AddTravelPackage = () => {
                 price: "",
                 itinerary: [""],
                 img: [{ link: "", altText: "" }],
+                dates: [],
             });
 
             alert("Travel Package added successfully");
@@ -137,6 +169,42 @@ const AddTravelPackage = () => {
                             />
                         </div>
                     </div>
+
+                    <div>
+                        <div className="form-group mb-3">
+                            <label className="mb-3">Available Dates</label>
+                            {formData.dates.map((date, index) => (
+                                <div key={index} className="input-group mb-3">
+                                    <input
+                                        type="date"
+                                        className="form-control"
+                                        value={date}
+                                        onChange={(e) => handleDateChange(index, e)}
+                                        required
+                                    />
+                                    {index > 0 && (
+                                        <button
+                                            type="button"
+                                            className="btn btn-danger"
+                                            onClick={() => handleRemoveDate(index)}
+                                        >
+                                            Remove Date
+                                        </button>
+                                    )}
+                                </div>
+                            ))}
+                            <div className="d-flex justify-content-center">
+                                <button
+                                    type="button"
+                                    className="btn btn-secondary mt-3"
+                                    onClick={handleAddDate}
+                                >
+                                    Add a Date
+                                </button>
+                            </div>
+                        </div>
+                    </div>
+
                     <div className="form-group row mb-3">
                         <label htmlFor="price" className="col-sm-2 col-form-label">Price</label>
                         <div className="col-sm-10">
