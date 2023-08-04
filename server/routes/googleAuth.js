@@ -5,7 +5,7 @@ const router = require("express").Router();
 const CLIENT_URL = "http://localhost:3000";
 
 router.get("/auth/google",
-  passport.authenticate("google", { scope: ["profile"] })
+  passport.authenticate("google", { scope: ["profile", "email"] })
 );
 
 router.get("/auth/google/callback", 

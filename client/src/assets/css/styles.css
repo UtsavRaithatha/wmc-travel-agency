@@ -152,11 +152,11 @@ form>p {
     background-color: var(--tertiary-color);
 }
 
-.nav-link {
+.Footer .nav-link {
     color: var(--secondary-color) !important;
 }
 
-.footer-desc {
+.Footer .footer-desc {
     color: var(--secondary-color) !important;
 }
 
@@ -165,25 +165,25 @@ form>p {
 
 /* Hero section starts */
 
-.image-container {
+.Hero .image-container {
     padding: 0;
     max-width: 500px;
     box-shadow: 0px 0px 15px var(--tertiary-color);
     border: 5px solid var(--quaternary-color);
 }
 
-.image-container img {
+.Hero .image-container img {
     width: 100%;
     height: 100%;
     /* object-fit: cover; */
 }
 
-.hero-heading {
+.Hero .hero-heading {
     color: var(--tertiary-color) !important;
     font-family: 'PT Serif', serif;
 }
 
-.hero-para {
+.Hero .hero-para {
     color: var(--quaternary-color);
 }
 
@@ -203,11 +203,11 @@ form>p {
 
 /* Carousel section starts */
 
-.carousel-item {
+.Carousel .carousel-item {
     background-size: cover;
 }
 
-.carousel-h {
+.Carousel .carousel-h {
     display: inline-block;
     margin-bottom: 2rem;
     padding: 0.5rem;
@@ -247,3 +247,29 @@ form>p {
 }
 
 /* Add Travel Package page ends */
+
+
+/* Profile starts */
+
+.Profile .card-body {
+    /* font-family: 'PT Serif', serif; */
+    font-family: harryPFont;
+    font-size: 2rem;
+    letter-spacing: 0.1rem;
+    color: var(--tertiary-color);
+}
+
+.Profile .card-title {
+    font-size: 3rem;
+}
+
+.Profile img {
+    margin: auto;
+    margin-bottom: 2rem;
+}
+
+.Profile .card {
+    border: 0;
+}
+
+/* Profile ends */

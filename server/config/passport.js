@@ -22,7 +22,6 @@ passport.use(new GoogleStrategy({
 },
     async function (accessToken, refreshToken, profile, cb) {
         try {
-
             const { given_name, family_name, email, sub, picture } = profile._json;
 
             const user = await User.findOrCreate({ googleId: sub }, {

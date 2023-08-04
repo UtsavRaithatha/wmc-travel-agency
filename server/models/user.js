@@ -19,7 +19,9 @@ const userSchema = new mongoose.Schema({
 });
 
 userSchema.methods.generateAuthToken = function() {
-    const token = jwt.sign({user: this.toObject()}, process.env.JWTPRIVATEKEY, {expiresIn: "7d"});
+    const userDetails = this.toObject();
+    delete userDetails.password;
+    const token = jwt.sign({user: userDetails}, process.env.JWTPRIVATEKEY, {expiresIn: "7d"});
     return token;
 }
 

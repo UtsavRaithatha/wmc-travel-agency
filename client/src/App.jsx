@@ -14,6 +14,7 @@ import Navbar from './components/Navbar';
 import { useState, useEffect } from 'react';
 import jwt_decode from "jwt-decode";
 import axios from 'axios';
+import Profile from './pages/Profile';
 
 function App() {
 
@@ -37,6 +38,7 @@ function App() {
           const data = response.data;
           
           if (data.isLoggedIn && data.user) {
+            console.log(data.user);
             setUser(data.user.doc);
           } else {
             setUser(null);
@@ -73,6 +75,7 @@ function App() {
         <Routes>
           <Route path="/login" element={user ? <Navigate replace to="/" /> : <Login />} />
           <Route path="/register" element={user ? <Navigate replace to="/" /> : <Register />} />
+          <Route path="/profile" element={user ? <Profile userDetails={user} /> : <Navigate replace to="/login" />} />
           <Route path="/" element={user ? <Home /> : <Navigate replace to="/login" />} />
           <Route path="/api/explore" element={user ? <Explore isAdmin={isAdmin}/> : <Navigate replace to="/login" />} />
           <Route path="/contact" element={user ? <Contact /> : <Navigate replace to="/login" />} />
