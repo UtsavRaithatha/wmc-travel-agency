@@ -25,6 +25,24 @@ export default function Navbar(props) {
                             <li className="nav-item">
                                 <Link className={`nav-link${isActive("/api/explore") ? " active fw-bold" : ""}`} to="/api/explore">Explore</Link>
                             </li>
+                            {props.isAdmin && (
+                                <div className="nav-item dropdown px-2">
+                                <Link className="nav-link dropdown-toggle" to="" role="button" data-bs-toggle="dropdown" aria-expanded="false">Actions
+                            </Link>
+                                <ul className="dropdown-menu">
+                                  <li>
+                                    <Link className="dropdown-item" to="/api/add-travel-package">
+                                      Add Travel Package
+                                    </Link>
+                                  </li>
+                                  <li>
+                                    <Link className="dropdown-item" to="/api/view-bookings">
+                                      View Bookings
+                                    </Link>
+                                  </li>
+                                </ul>
+                                </div>
+                              )}
                             <li className="nav-item">
                                 <Link className={`nav-link${isActive("/contact") ? " active fw-bold" : ""}`} to="/contact">Contact</Link>
                             </li>

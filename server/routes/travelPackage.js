@@ -75,4 +75,18 @@ router.put("/edit-travel-package/:key", async (req, res) => {
   }
 });
 
+router.delete("/delete-package/:id", async (req, res) => {
+    try {
+      const packageKey = parseInt(req.params.id);
+      const deletedPackage = await TravelPackage.findOneAndDelete({ key: packageKey });
+      if (!deletedPackage) {
+        return res.status(404).json({ message: "Package not found" });
+      }
+      res.status(200).json({ message: "Package deleted successfully" });
+    } catch (error) {
+      console.log("Error while deleting package:", error);
+      res.status(500).json({ message: "Internal server error" });
+    }
+  });
+  
 module.exports = router;

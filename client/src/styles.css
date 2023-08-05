@@ -298,3 +298,22 @@ form>p {
 }
 
 /* Booking ends */
+
+/* View Booking page starts */
+
+.ViewBookings {
+    color: var(--tertiary-color);
+    font-family: 'PT Serif', serif;
+    font-size: 1.3rem;
+}
+
+.ViewBookings h4 {
+    font-size: 2rem;
+}
+
+.ViewBookings .booking-card {
+    border: 0.05rem solid var(--tertiary-color);
+    box-shadow: 0px 0px 15px var(--tertiary-color);
+}
+
+/* View Booking page ends */

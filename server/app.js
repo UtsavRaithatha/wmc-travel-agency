@@ -39,7 +39,7 @@ app.use("/api/users", userRoutes);
 app.use("/api/auth", authRoutes);
 app.use("/", googleAuth);
 app.use("/api", travelPackageRoutes);
-app.use("/api/bookings", bookingRoutes);
+app.use("/api", bookingRoutes);
 
 const port = process.env.PORT || 5000;
 

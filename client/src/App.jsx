@@ -16,6 +16,7 @@ import jwt_decode from "jwt-decode";
 import axios from 'axios';
 import Profile from './pages/Profile';
 import Booking from './pages/Booking';
+import ViewBookings from './pages/ViewBookings';
 
 function App() {
 
@@ -71,7 +72,7 @@ function App() {
     <div className="App">
       <Background />
       <BrowserRouter>
-        {user && <Navbar onLogout={handleLogout} link={user.picture} />}
+        {user && <Navbar onLogout={handleLogout} link={user.picture} isAdmin={isAdmin}/>}
         <Routes>
           <Route path="/login" element={user ? <Navigate replace to="/" /> : <Login />} />
           <Route path="/register" element={user ? <Navigate replace to="/" /> : <Register />} />
@@ -81,9 +82,10 @@ function App() {
           <Route path="/contact" element={user ? <Contact /> : <Navigate replace to="/login" />} />
           <Route path="/about" element={user ? <About /> : <Navigate replace to="/login" />} />
           <Route path="/api/explore/:key" element={user ? <TravelPackage userid={user._id} /> : <Navigate replace to="/login" />} />
+          <Route path="/booking/:userid/:key" element={<Booking />} />
           {isAdmin && <Route path="/api/add-travel-package" element={<AddTravelPackage />} />}
           {isAdmin && <Route path="/api/edit-travel-package/:key" element={<EditTravelPackage />} />}
-          <Route path="/booking/:userid/:key" element={<Booking />} />
+          {isAdmin && <Route path="/api/view-bookings" element={<ViewBookings />} />}
         </Routes>
       </BrowserRouter>
     </div>
