@@ -1,5 +1,3 @@
-Sure, here's a README.md documentation for your project:
-
 ```markdown
 # Mystical Voyages
 
