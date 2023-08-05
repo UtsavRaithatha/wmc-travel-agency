@@ -1,4 +1,3 @@
-```markdown
 # Mystical Voyages
 
 Mystical Voyages is a web application that allows users to explore and book travel packages. It provides a user-friendly interface for browsing different travel packages, viewing package details, and making bookings. The application also includes an admin section where administrators can manage travel packages and view bookings.
