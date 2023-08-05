@@ -273,3 +273,31 @@ form>p {
 }
 
 /* Profile ends */
+
+/* FAQ starts */
+
+.FAQ .accordion {
+    background-color: var(--tertiary-color);
+    border-radius: 2rem;
+    font-family: 'PT Serif', serif;
+}
+
+/* FAQ ends */
+
+
+/* Contact starts */
+
+.Contact {
+    color: var(--tertiary-color);
+}
+
+/* Contact ends */
+
+/* About starts */
+
+.About {
+    color: var(--tertiary-color);
+}
+
+/* About ends */
+

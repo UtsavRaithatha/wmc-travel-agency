@@ -17,6 +17,7 @@ import axios from 'axios';
 import Profile from './pages/Profile';
 import Booking from './pages/Booking';
 import ViewBookings from './pages/ViewBookings';
+import FAQ from './pages/FAQ';
 
 function App() {
 
@@ -81,6 +82,7 @@ function App() {
           <Route path="/api/explore" element={user ? <Explore isAdmin={isAdmin}/> : <Navigate replace to="/login" />} />
           <Route path="/contact" element={user ? <Contact /> : <Navigate replace to="/login" />} />
           <Route path="/about" element={user ? <About /> : <Navigate replace to="/login" />} />
+          <Route path="/FAQ" element={user ? <FAQ /> : <Navigate replace to="/login" />} />
           <Route path="/api/explore/:key" element={user ? <TravelPackage userid={user._id} /> : <Navigate replace to="/login" />} />
           <Route path="/booking/:userid/:key" element={<Booking />} />
           {isAdmin && <Route path="/api/add-travel-package" element={<AddTravelPackage />} />}
