@@ -7,8 +7,8 @@ router.post("/", async (req, res) => {
         const { userId, travelPackageId, persons, selectedDate } = req.body;
 
         const newBooking = new Booking({
-          user: userId,
-          travelPackage: travelPackageId,
+          userId: userId,
+          travelPackageId: travelPackageId,
           persons,
           selectedDate,
         });

@@ -15,6 +15,7 @@ import { useState, useEffect } from 'react';
 import jwt_decode from "jwt-decode";
 import axios from 'axios';
 import Profile from './pages/Profile';
+import Booking from './pages/Booking';
 
 function App() {
 
@@ -38,7 +39,6 @@ function App() {
           const data = response.data;
           
           if (data.isLoggedIn && data.user) {
-            console.log(data.user);
             setUser(data.user.doc);
           } else {
             setUser(null);
@@ -67,8 +67,6 @@ function App() {
 
   const isAdmin = user && user.role === "admin";
 
-  console.log(user);
-
   return (
     <div className="App">
       <Background />
@@ -82,9 +80,10 @@ function App() {
           <Route path="/api/explore" element={user ? <Explore isAdmin={isAdmin}/> : <Navigate replace to="/login" />} />
           <Route path="/contact" element={user ? <Contact /> : <Navigate replace to="/login" />} />
           <Route path="/about" element={user ? <About /> : <Navigate replace to="/login" />} />
-          <Route path="/api/explore/:key" element={user ? <TravelPackage /> : <Navigate replace to="/login" />} />
+          <Route path="/api/explore/:key" element={user ? <TravelPackage userid={user._id} /> : <Navigate replace to="/login" />} />
           {isAdmin && <Route path="/api/add-travel-package" element={<AddTravelPackage />} />}
           {isAdmin && <Route path="/api/edit-travel-package/:key" element={<EditTravelPackage />} />}
+          <Route path="/booking/:userid/:key" element={<Booking />} />
         </Routes>
       </BrowserRouter>
     </div>

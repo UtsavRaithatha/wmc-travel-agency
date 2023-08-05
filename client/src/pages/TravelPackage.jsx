@@ -1,11 +1,11 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
-import { useParams } from "react-router-dom";
+import { useParams, Link } from "react-router-dom";
 import Carousel from "../components/Carousel";
 import Itinerary from "../components/Itinerary";
 import "../assets/css/styles.css";
 
-const TravelPackage = () => {
+const TravelPackage = ({ userid }) => {
 
   const { key } = useParams();
   const [travelPackage, setTravelPackage] = useState({});
@@ -59,17 +59,23 @@ const TravelPackage = () => {
             </div>
 
             <div className="container mt-5">
-            <h3 className="mb-4 d-flex justify-content-center">Departure Options Available</h3>
-            <div className="dates-container">
-            {travelPackage.dates.map((date, index) => {
-              const onlyDate = new Date(date);
-              const displayDate = getDayName(onlyDate.getDay()) + ", " + onlyDate.getDate() + " " + getMonthName(onlyDate.getMonth()) + " " + onlyDate.getFullYear();
-              return <p key={index} className="text-center">{displayDate}</p>;
-            })}
-            </div>
-          </div>
+              <h3 className="mb-4 d-flex justify-content-center">Departure Options Available</h3>
+              <div className="dates-container">
+                {travelPackage.dates.map((date, index) => {
+                  const onlyDate = new Date(date);
+                  const displayDate = getDayName(onlyDate.getDay()) + ", " + onlyDate.getDate() + " " + getMonthName(onlyDate.getMonth()) + " " + onlyDate.getFullYear();
+                  return <p key={index} className="text-center">{displayDate}</p>;
+                })}
+              </div>
 
-            <div className="container mt-5">
+              <div className="text-center">
+                <Link to={`/booking/${userid}/${travelPackage.key}`} className=" my-4 btn btn-lg btn-success">
+                  Book Now
+                </Link>
+              </div>
+            </div>
+
+            <div className="container mt-3">
               <h3 className="mb-4 d-flex justify-content-center">Itinerary</h3>
               <div className="itinerary-container">
                 {travelPackage.itinerary.map((info, index) => (
@@ -78,7 +84,7 @@ const TravelPackage = () => {
               </div>
             </div>
           </div>
-          </div>
+        </div>
       )}
     </div>
   );

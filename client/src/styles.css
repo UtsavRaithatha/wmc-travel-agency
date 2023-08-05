@@ -262,3 +262,39 @@ form>p {
 
 
 /* TravelPackage section ends */
+
+/* Booking starts */
+
+.Booking {
+    font-family: 'PT Serif', serif;
+}
+
+.Booking label {
+    font-size: 1.2rem;
+    color: var(--tertiary-color);
+}
+
+.Booking h3, h4 {
+    color: var(--tertiary-color);
+    font-size: 1.5rem;
+}
+
+.Booking p {
+    color: var(--tertiary-color);
+    font-size: 1.5rem;
+}
+
+.Booking h3 {
+    font-family: harryPFont;
+    font-size: 3rem;
+}
+
+.Booking input, select {
+    background-color: var(--tertiary-color);
+    width: 40%;
+    height: 2.5rem;
+    border-radius: 0.3rem;
+    padding: 0 0.5rem;
+}
+
+/* Booking ends */
