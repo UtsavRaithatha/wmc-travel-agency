@@ -91,6 +91,24 @@ form>p {
     color: var(--quaternary-color);
 }
 
+.divider {
+    font-size: 1.5rem;
+    color: var(--tertiary-color);
+    display: flex;
+    align-items: center;
+    padding: 1rem 0;
+    padding-bottom: 2rem;
+}
+
+.divider::before,
+.divider::after {
+    flex: 1;
+    content: "";
+    padding: 0.1rem;
+    background-color: var(--tertiary-color);
+    margin: 1rem;
+}
+
 
 /* Authentication Page end */
 
@@ -125,7 +143,7 @@ form>p {
 /* Home page starts */
 
 .Jumbotron .jumbotron {
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)), url("https://images.ctfassets.net/usf1vwtuqyxm/71J6YPxNauhFABbjHpGluJ/631bd6980b0a430d5b476ef331abb2b5/release_1_hogwarts.png");
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)) url("https://images.ctfassets.net/usf1vwtuqyxm/71J6YPxNauhFABbjHpGluJ/631bd6980b0a430d5b476ef331abb2b5/release_1_hogwarts.png");
     background-size: cover;
     background-position: center;
     color: #fff;
@@ -203,6 +221,7 @@ form>p {
 
 /* Carousel section starts */
 
+
 .Carousel .carousel-item {
     background-size: cover;
 }
@@ -216,6 +235,17 @@ form>p {
     font-family: 'PT Serif', serif;
     color: var(--quaternary-color);
     background-color: var(--background-color);
+}
+
+.Carousel .carousel-img-overlay {
+    /* background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)); */
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 20%;
+    background: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0));
+    opacity: 0.5;
 }
 
 
@@ -300,4 +330,3 @@ form>p {
 }
 
 /* About ends */
-

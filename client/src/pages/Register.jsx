@@ -51,12 +51,12 @@ function Register() {
   }
 
   return (<div className="Authentication">
-    <div className="container">
+    <div className="container mt-5">
       <div className="row justify-content-center">
         <div className="col-xs-12 col-sm-8 col-md-6 col-lg-4">
           <div className="card">
             <div className="card-header">
-              Wizarding World Travel Agency
+            Welocome to Mystical Voyages !
             </div>
             <div className="card-body">
 
@@ -64,6 +64,8 @@ function Register() {
                 <i className="fab fa-google me-2"></i>
                 Sign Up with Google
               </button>
+
+              <div className="divider">OR</div>
 
               <form onSubmit={handleSubmit}>
 

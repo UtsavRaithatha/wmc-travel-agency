@@ -1,6 +1,5 @@
 import React from "react";
 import Jumbotron from "../components/Jumbotron";
-import Footer from "../components/Footer";
 import Hero from "../components/Hero";
 import "../assets/css/styles.css";
 
@@ -15,9 +14,6 @@ function Home() {
             <Hero imgsrc="https://i.pinimg.com/originals/ca/e5/5a/cae55a87045ef2b7c2b303ffaad1ca1a.jpg" altText="hogsmeade" heading="Wonders of Wizarding World Tour" content="Embark on an extraordinary journey through the Wonders of the Wizarding World Tour. Begin your adventure in London, where you'll explore Diagon Alley and visit famous magical shops. Sail on a magical river cruise and immerse yourself in the beauty of Hogsmeade Village amidst the Scottish Highlands. Conclude your tour with a magical farewell banquet and a visit to the Warner Bros. Studio, where the magic of Harry Potter comes to life." id="/api/explore/2" />
 
             <Hero imgsrc="https://lovelace-media.imgix.net/getty/450815270.jpg" altText="diagon alley" heading="Wizarding World Grand Adventure" content="For the ultimate magical experience, join our Wizarding World Grand Adventure. Unveil the secrets of Hogwarts during an exclusive private tour of the castle and immerse yourself in the wonders of Diagon Alley with a personal shopping assistant. Experience the thrill of a live Quidditch match and encounter mythical creatures in their natural sanctuary. End your journey with a magical gala dinner and a farewell feast at the iconic Great Hall." id="/api/explore/3" />
-
-
-        <Footer />
 
         </div>
     );

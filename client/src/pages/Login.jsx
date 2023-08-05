@@ -51,12 +51,12 @@ function Login() {
 
   return (
     <div className="Authentication">
-      <div className="container">
+      <div className="container mt-5">
         <div className="row justify-content-center">
           <div className="col-xs-12 col-sm-8 col-md-6 col-lg-4">
             <div className="card">
               <div className="card-header">
-                <h1>Wizarding World Travel Agency</h1>
+                <h1>Welocome to Mystical Voyages !</h1>
               </div>
               <div className="card-body">
 
@@ -65,7 +65,9 @@ function Login() {
                   Sign Up with Google
                 </button>
 
-                <form onClick={handleSubmit}>
+                <div className="divider">OR</div>
+
+                <form onSubmit={handleSubmit}>
 
                   <div className="form-floating mb-3 input-box">
                     <input type="email" className="form-control input-text" id="floatingInput" placeholder="name@example.com" name="email" value={email} onChange={handleChange} />

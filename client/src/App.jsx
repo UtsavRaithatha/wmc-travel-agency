@@ -18,6 +18,7 @@ import Profile from './pages/Profile';
 import Booking from './pages/Booking';
 import ViewBookings from './pages/ViewBookings';
 import FAQ from './pages/FAQ';
+import Footer from './components/Footer';
 
 function App() {
 
@@ -88,7 +89,8 @@ function App() {
           {isAdmin && <Route path="/api/add-travel-package" element={<AddTravelPackage />} />}
           {isAdmin && <Route path="/api/edit-travel-package/:key" element={<EditTravelPackage />} />}
           {isAdmin && <Route path="/api/view-bookings" element={<ViewBookings />} />}
-        </Routes>
+          </Routes>
+          {user && <Footer />}
       </BrowserRouter>
     </div>
   );

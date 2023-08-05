@@ -11,8 +11,8 @@ export default function Hero(props) {
                         <img src={props.imgsrc} className="d-block mx-lg-auto img-fluid hero-img" alt={props.altText} />
                     </div>
                     <div className="col-lg-6">
-                        <h2 className="display-5 fw-bold text-body-emphasis lh-1 mb-3 hero-heading">{props.heading}</h2>
-                        <p className="lead hero-para">{props.content}</p>
+                        <h2 className="display-5 fw-bold text-body-emphasis lh-1 mb-3 px-3 hero-heading">{props.heading}</h2>
+                        <p className="lead hero-para px-3">{props.content}</p>
                         <div className="d-grid gap-2 d-md-flex justify-content-md-center mt-5">
                             <Link type="button" className="btn btn-outline-secondary btn-lg px-4" to={props.id}> Explore </Link>
                         </div>

@@ -2,7 +2,7 @@ import React from 'react'
 
 export default function FAQ() {
     return (
-        <div className="FAQ">
+        <div className="FAQ d-flex align-items-center" style={{ minHeight: "80vh" }}>
             <div className="container text-center my-5">
                 <h3 className="harry my-3">Frequently Asked Questions</h3>
                 <div className="accordion" id="faqAccordion">
@@ -16,7 +16,7 @@ export default function FAQ() {
                                 aria-expanded="false"
                                 aria-controls="faqCollapse1"
                             >
-                                What destinations do you offer?
+                                1. What destinations do you offer?
                             </button>
                         </h4>
                         <div
@@ -40,7 +40,7 @@ export default function FAQ() {
                                 aria-expanded="false"
                                 aria-controls="faqCollapse2"
                             >
-                                How can I book a travel package?
+                                2. How can I book a travel package?
                             </button>
                         </h4>
                         <div
