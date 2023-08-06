@@ -1,3 +1,3 @@
-const BACKEND_URL = "https://wmc-travel-agency-backend-d0ak.onrender.com";
+const BACKEND_URL = "https://mystical-voyages-backend.onrender.com";
 
 export default BACKEND_URL;
