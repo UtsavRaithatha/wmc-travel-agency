@@ -257,6 +257,11 @@ form>p {
     opacity: 0.5;
 }
 
+.c-img {
+    max-height: 70vh;
+    background-size: cover;
+}
+
 
 
 /* Carousel section ends */
