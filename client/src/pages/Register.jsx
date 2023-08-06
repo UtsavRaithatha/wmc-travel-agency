@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../assets/css/styles.css";
+import BACKEND_URL from "../config";
 
 function Register() {
 
@@ -34,7 +35,7 @@ function Register() {
     event.preventDefault();
 
     try {
-      const url = "http://localhost:5000/api/users";
+      const url = `${BACKEND_URL}/api/users`;
       const { data: res } = await axios.post(url, data);
       navigate("/login");
       console.log(res.message);
@@ -47,7 +48,7 @@ function Register() {
   }
 
   const googleLogin = () => {
-    window.open("http://localhost:5000/auth/google", "_self");
+    window.open(`${BACKEND_URL}/auth/google`, "_self");
   }
 
   return (<div className="Authentication">

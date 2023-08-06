@@ -2,13 +2,14 @@ import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import axios from "axios";
 import "../assets/css/styles.css";
+import BACKEND_URL from "../config";
 
 export default function Card(props) {
 
     const navigate = useNavigate();
     const handleDelete = async () => {
         if (window.confirm("Are you sure you want to delete this package?")) {
-            await axios.delete(`http://localhost:5000/api/delete-package/${props.id}`);
+            await axios.delete(`${BACKEND_URL}/api/delete-package/${props.id}`);
             navigate("/api/explore");
         }
     };

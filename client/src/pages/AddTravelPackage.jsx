@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import "../assets/css/styles.css";
 import axios from "axios";
+import BACKEND_URL from "../config";
 
 const AddTravelPackage = () => {
     const [formData, setFormData] = useState({
@@ -117,7 +118,7 @@ const AddTravelPackage = () => {
         }
 
         try {
-            await axios.post("http://localhost:5000/api/add-travel-package", formData);
+            await axios.post(`${BACKEND_URL}/api/add-travel-package`, formData);
 
             setFormData({
                 name: "",

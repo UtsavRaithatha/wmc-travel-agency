@@ -51,6 +51,15 @@ a {
     color: var(--secondary-color);
 }
 
+.error {
+    font-size: 2rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: var(--quaternary-color);
+    height: 80vh;
+}
+
 /* Authentication Page Start */
 
 .Authentication {
@@ -143,20 +152,20 @@ form>p {
 /* Home page starts */
 
 .Jumbotron .jumbotron {
-    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)) url("https://images.ctfassets.net/usf1vwtuqyxm/71J6YPxNauhFABbjHpGluJ/631bd6980b0a430d5b476ef331abb2b5/release_1_hogwarts.png");
+    background-image: linear-gradient(to bottom, rgba(0, 0, 0, 0.7), rgba(0, 0, 0, 0)), url("https://images.ctfassets.net/usf1vwtuqyxm/71J6YPxNauhFABbjHpGluJ/631bd6980b0a430d5b476ef331abb2b5/release_1_hogwarts.png");
     background-size: cover;
     background-position: center;
     color: #fff;
     padding: 110px 0;
 }
 
-.jumbotron-heading {
+.Jumbotron .jumbotron-heading {
     font-family: harryPFont;
     font-size: 4rem;
     color: var(--quaternary-color);
 }
 
-.jumbotron-details {
+.Jumbotron .jumbotron-details {
     font-size: 1.8rem;
     font-family: 'PT Serif', serif;
     color: var(--quaternary-color) !important;
@@ -252,6 +261,67 @@ form>p {
 
 /* Carousel section ends */
 
+/* TravelPackage section starts */
+
+.TravelPackage h2 {
+    font-family: 'PT Serif', serif;
+    color: var(--tertiary-color);
+    font-family: harryPFont;
+    font-size: 5rem;
+}
+
+.TravelPackage p {
+    font-family: 'PT Serif', serif;
+    color: var(--tertiary-color);
+    font-size: 1.5rem;
+}
+
+.TravelPackage h3 {
+    font-family: 'PT Serif', serif;
+    color: var(--quaternary-color);
+    font-size: 1.8rem;
+}
+
+.TravelPackage .details {
+    color: var(--quaternary-color);
+    font-size: 1.2rem;
+}
+
+.itinerary-item {
+    display: flex;
+    align-items: center;
+    margin-bottom: 20px;
+}
+
+.itinerary-item:not(:last-child) {
+    border-bottom: 2px solid var(--tertiary-color);
+}
+
+.itinerary-container {
+    border: 2px solid var(--tertiary-color);
+    border-radius: 1rem;
+    box-shadow: 0px 0px 7px var(--tertiary-color);
+}
+
+.day-number {
+    flex-basis: 80px;
+    text-align: center;
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: var(--tertiary-color);
+}
+
+@media (max-width: 767px) {
+    .itinerary-item {
+        flex-direction: column;
+        align-items: center;
+        text-align: center;
+    }
+}
+
+
+/* TravelPackage section ends */
+
 
 /* Add Travel Package page starts */
 
@@ -278,8 +348,66 @@ form>p {
 
 /* Add Travel Package page ends */
 
+/* Booking starts */
+
+.Booking {
+    font-family: 'PT Serif', serif;
+}
+
+.Booking label {
+    font-size: 1.2rem;
+    color: var(--tertiary-color);
+}
+
+.Booking h3, h4 {
+    color: var(--tertiary-color);
+    font-size: 1.5rem;
+}
+
+.Booking p {
+    color: var(--tertiary-color);
+    font-size: 1.5rem;
+}
+
+.Booking h3 {
+    font-family: harryPFont;
+    font-size: 3rem;
+}
+
+.Booking input, select {
+    background-color: var(--tertiary-color);
+    width: 40%;
+    height: 2.5rem;
+    border-radius: 0.3rem;
+    padding: 0 0.5rem;
+}
+
+/* Booking ends */
+
+/* View Booking page starts */
+
+.ViewBookings {
+    color: var(--tertiary-color);
+    font-family: 'PT Serif', serif;
+    font-size: 1.3rem;
+}
+
+.ViewBookings h4 {
+    font-size: 2rem;
+}
+
+.ViewBookings .booking-card {
+    border: 0.05rem solid var(--tertiary-color);
+    box-shadow: 0px 0px 15px var(--tertiary-color);
+}
+
+/* View Booking page ends */
 
 /* Profile starts */
+
+.Profile .card {
+    background: transparent;
+}
 
 .Profile .card-body {
     /* font-family: 'PT Serif', serif; */

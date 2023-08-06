@@ -3,6 +3,7 @@ import React, { useState } from "react";
 import axios from "axios";
 import { Link, useNavigate } from "react-router-dom";
 import "../assets/css/styles.css";
+import BACKEND_URL from "../config";
 
 function Login() {
 
@@ -32,7 +33,7 @@ function Login() {
     event.preventDefault();
 
     try {
-      const url = "http://localhost:5000/api/auth";
+      const url = `${BACKEND_URL}/api/auth`;
       const { data: res } = await axios.post(url, data);
       localStorage.setItem("token", res.data);
       navigate("/");
@@ -46,7 +47,7 @@ function Login() {
   }
 
   const googleLogin = () => {
-    window.open("http://localhost:5000/auth/google", "_self");
+    window.open(`${BACKEND_URL}/auth/google`, "_self");
   }
 
   return (

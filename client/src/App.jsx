@@ -7,7 +7,6 @@ import Contact from './pages/Contact';
 import About from './pages/About';
 import Background from './components/Background';
 import TravelPackage from './pages/TravelPackage';
-import "./styles.css";
 import AddTravelPackage from './pages/AddTravelPackage';
 import EditTravelPackage from './pages/EditTravelPackage';
 import Navbar from './components/Navbar';
@@ -19,6 +18,8 @@ import Booking from './pages/Booking';
 import ViewBookings from './pages/ViewBookings';
 import FAQ from './pages/FAQ';
 import Footer from './components/Footer';
+import BACKEND_URL from "./config";
+import "./assets/css/styles.css";
 
 function App() {
 
@@ -38,7 +39,7 @@ function App() {
     else {
       const checkAuthentication = async () => {
         try {
-          const response = await axios.get("http://localhost:5000/api/auth/check", { withCredentials: true });
+          const response = await axios.get(`${BACKEND_URL}/api/auth/check`, { withCredentials: true });
           const data = response.data;
           
           if (data.isLoggedIn && data.user) {
@@ -56,13 +57,14 @@ function App() {
 
   const handleLogout = async () => {
     try {
+
+      await axios.get(`${BACKEND_URL}/logout`, {
+        withCredentials: true,
+      });
+
       localStorage.removeItem("token");
       setUser(null);
-  
-      await fetch("http://localhost:5000/logout", {
-        method: "GET",
-        credentials: "include",
-      });
+
     } catch (error) {
       console.log("Error while logging out:", error);
     }

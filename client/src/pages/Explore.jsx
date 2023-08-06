@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import Card from "../components/Card";
 import axios from "axios";
 import "../assets/css/styles.css";
+import BACKEND_URL from "../config";
 
 function Explore(props) {
 
@@ -11,7 +12,7 @@ function Explore(props) {
     useEffect(() => {
         const fetchTravelPackage = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/explore`);
+                const response = await axios.get(`${BACKEND_URL}/api/explore`);
                 setTravelPackage(response.data);
             } catch (error) {
                 if (error.response.status === 404) {

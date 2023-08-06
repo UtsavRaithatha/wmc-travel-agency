@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { useParams, useNavigate } from "react-router-dom";
+import BACKEND_URL from "../config";
 
 const Booking = () => {
     const navigate = useNavigate();
@@ -12,7 +13,7 @@ const Booking = () => {
     useEffect(() => {
         const fetchTravelPackageData = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/explore/${key}`);
+                const response = await axios.get(`${BACKEND_URL}/api/explore/${key}`);
                 setTravelPackage(response.data);
             } catch (error) {
                 console.error("Error fetching travel package data:", error);
@@ -80,7 +81,7 @@ const Booking = () => {
                 selectedDate: new Date(bookingDetails.selectedDate),
             };
 
-            await axios.post("http://localhost:5000/api/bookings", bookingData);
+            await axios.post(`${BACKEND_URL}/api/bookings`, bookingData);
 
             window.alert("Booking successfull!");
             navigate("/");

@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { useNavigate, useParams } from "react-router-dom";
 import axios from "axios";
+import BACKEND_URL from "../config";
 
 const EditTravelPackage = () => {
     const navigate = useNavigate();
@@ -17,7 +18,7 @@ const EditTravelPackage = () => {
     useEffect(() => {
         const fetchTravelPackage = async () => {
             try {
-                const response = await axios.get(`http://localhost:5000/api/explore/${key}`);
+                const response = await axios.get(`${BACKEND_URL}/api/explore/${key}`);
                 const formattedDates = response.data.dates.map((date) => {
                     const dateObj = new Date(date);
                     const formattedDate = dateObj.toISOString().split('T')[0];
@@ -148,7 +149,7 @@ const EditTravelPackage = () => {
         console.log(formDataWithFormattedDates);
 
         try {
-            await axios.put(`http://localhost:5000/api/edit-travel-package/${key}`, formDataWithFormattedDates);
+            await axios.put(`${BACKEND_URL}/api/edit-travel-package/${key}`, formDataWithFormattedDates);
             
             alert("Travel Package edited successfully");
             navigate(`/api/explore/${key}`);

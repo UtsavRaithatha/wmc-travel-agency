@@ -4,6 +4,7 @@ import { useParams, Link } from "react-router-dom";
 import Carousel from "../components/Carousel";
 import Itinerary from "../components/Itinerary";
 import "../assets/css/styles.css";
+import BACKEND_URL from "../config";
 
 const TravelPackage = ({ userid }) => {
 
@@ -14,7 +15,7 @@ const TravelPackage = ({ userid }) => {
   useEffect(() => {
     const fetchTravelPackage = async () => {
       try {
-        const response = await axios.get(`http://localhost:5000/api/explore/${key}`);
+        const response = await axios.get(`${BACKEND_URL}/api/explore/${key}`);
         setTravelPackage(response.data);
       } catch (error) {
         if (error.response.status === 404) {

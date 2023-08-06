@@ -1,5 +1,6 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
+import BACKEND_URL from "../config";
 
 const ViewBookings = () => {
     const [bookings, setBookings] = useState([]);
@@ -7,7 +8,7 @@ const ViewBookings = () => {
     useEffect(() => {
         const fetchBookings = async () => {
             try {
-                const response = await axios.get("http://localhost:5000/api/view-bookings");
+                const response = await axios.get(`${BACKEND_URL}/api/view-bookings`);
                 setBookings(response.data);
             } catch (error) {
                 console.log("Error while fetching bookings:", error);
