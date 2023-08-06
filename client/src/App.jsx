@@ -58,12 +58,12 @@ function App() {
   const handleLogout = async () => {
     try {
 
+      localStorage.removeItem("token");
+      setUser(null);
+
       await axios.get(`${BACKEND_URL}/logout`, {
         withCredentials: true,
       });
-
-      localStorage.removeItem("token");
-      setUser(null);
 
     } catch (error) {
       console.log("Error while logging out:", error);
