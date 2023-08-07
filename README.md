@@ -2,6 +2,20 @@
 
 Mystical Voyages is a web application that allows users to explore and book travel packages. It provides a user-friendly interface for browsing different travel packages, viewing package details, and making bookings. The application also includes an admin section where administrators can manage travel packages and view bookings.
 
+## Website Link
+
+https://coruscating-seahorse-2f2f42.netlify.app
+
+## Admin Credentials
+
+- email: admin@gmail.com
+- password: Admin@123
+
+## User Credentials
+
+- email: user@gmail.com
+- password: User@123
+
 ## Technologies Used
 
 - Frontend: React, React Router, Axios, Bootstrap
