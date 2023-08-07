@@ -61,9 +61,7 @@ function App() {
       localStorage.removeItem("token");
       setUser(null);
 
-      await axios.get(`${BACKEND_URL}/logout`, {
-        withCredentials: true,
-      });
+      await axios.get(`${BACKEND_URL}/logout`, { withCredentials: true });
 
     } catch (error) {
       console.log("Error while logging out:", error);
