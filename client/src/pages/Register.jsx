@@ -38,7 +38,6 @@ function Register() {
       const url = `${BACKEND_URL}/api/users`;
       const { data: res } = await axios.post(url, data);
       navigate("/login");
-      console.log(res.message);
     } catch (error) {
       if (error.response && error.response.status >= 400 && error.response.status <= 500) {
         setError(error.response.data.message);
