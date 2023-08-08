@@ -25,10 +25,12 @@ app.use(cors({
     credentials: true
 }));
 
+app.set("trust proxy", 1);
+
 app.use(session({
     secret: process.env.SECRET,
-    resave: false,
-    saveUninitialized: false,
+    resave: true,
+    saveUninitialized: true,
     cookie: {
         sameSite: "none",
         secure: true,
