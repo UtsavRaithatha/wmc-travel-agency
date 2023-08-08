@@ -58,10 +58,22 @@ function App() {
   const handleLogout = async () => {
     try {
 
-      localStorage.removeItem("token");
       setUser(null);
 
-      await axios.get(`${BACKEND_URL}/logout`, { withCredentials: true });
+      if (localStorage.getItem("token")) {
+        localStorage.removeItem("token");
+      }
+      else {
+        axios.get(`${BACKEND_URL}/logout`, { withCredentials: true })
+          .then((response) => {
+            if (response.data === "done") {
+              window.location.href = "/";
+            }
+          })
+          .catch((error) => {
+            console.error('Error logging out:', error);
+          });
+      }
 
     } catch (error) {
       console.log("Error while logging out:", error);
